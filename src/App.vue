@@ -1,11 +1,6 @@
-<script setup></script>
-
 <template>
   <router-view></router-view>
 </template>
-
-<style scoped>
-svg {
-  width: 1em;
-}
+<script lang="ts" setup></script>
+<style>
 </style>

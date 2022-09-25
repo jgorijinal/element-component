@@ -1,0 +1,15 @@
+html,body,#app {
+  height: 100%;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+svg {
+  width: 22px;
+}
+.common-layout,
+.el-container,
+.el-menu {
+  height: 100%;
+}
