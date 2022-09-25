@@ -1,20 +1,21 @@
 <template>
   <el-menu
-    default-active="2"
+    router
+    default-active="/home"
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
   >
-    <el-menu-item index="1">
-      <el-icon-menu />
-      <span>导航1</span>
+    <el-menu-item index="/home">
+      <el-icon-house />
+      <span>首页</span>
     </el-menu-item>
-    <el-menu-item index="2">
-      <el-icon-menu />
-      <span>导航2</span>
+    <el-menu-item index="/chooseIcon">
+      <el-icon-select />
+      <span>图标选择器</span>
     </el-menu-item>
-    <el-menu-item index="3">
-      <el-icon-menu />
-      <span>导航3</span>
+    <el-menu-item index="/chooseArea">
+      <el-icon-position />
+      <span>省市区选择</span>
     </el-menu-item>
   </el-menu>
 </template>
