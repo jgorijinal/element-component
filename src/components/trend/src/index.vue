@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="trend-container">
     <div class="trend">
       <div class="text" :style="{ color: textColor }">
         <slot v-if="slots.default"></slot>
@@ -57,11 +57,11 @@ const props = defineProps({
   },
   upIcon: {
     type: String,
-    default: "ArrowUp",
+    default: "ArrowUpBold",
   },
   downIcon: {
     type: String,
-    default: "ArrowDown",
+    default: "ArrowDownBold",
   },
 });
 // 对插槽的处理
@@ -74,7 +74,7 @@ const textColor = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.trend-container {
   display: inline-block;
   .trend {
     display: flex;
