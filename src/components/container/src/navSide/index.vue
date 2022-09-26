@@ -3,7 +3,7 @@
     router
     default-active="/home"
     class="el-menu-vertical-demo"
-    :collapse="isCollapse"
+    :collapse="isCollapse"  
   >
     <el-menu-item index="/home">
       <el-icon-house />
@@ -16,6 +16,10 @@
     <el-menu-item index="/chooseArea">
       <el-icon-position />
       <span>省市区选择</span>
+    </el-menu-item>
+    <el-menu-item index="/trend">
+      <el-icon-arrow-up />
+      <span>趋势标记</span>
     </el-menu-item>
   </el-menu>
 </template>

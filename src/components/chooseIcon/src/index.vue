@@ -17,7 +17,7 @@
           @click="clickItem(item)"
         >
           <div class="icon">
-            <component :is="`el-icon-${toLine(item)}`"></component>
+            <component :is="`el-icon${toLine(item)}`"></component>
           </div>
           <div class="text">{{ item }}</div>
         </div>
@@ -47,7 +47,7 @@ const close = () => {
 };
 
 const clickItem = (item) => {
-  const iconName = `<el-icon-${toLine(item)} />`
+  const iconName = `<el-icon${toLine(item)} />`
   // 复制功能的 hooks
   useCopy(iconName)
   // 关闭对话框

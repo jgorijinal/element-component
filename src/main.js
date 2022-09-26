@@ -14,7 +14,7 @@ const app = createApp(App);
 // 注册全局图标 浪费一点性能
 for (const [key, component] of Object.entries(Icons)) {
   // 注册全部组件 el-icon-xxx 的形式
-  app.component(`el-icon-${toLine(key)}`, component);
+  app.component(`el-icon${toLine(key)}`, component);
 }
 
 app.use(router);

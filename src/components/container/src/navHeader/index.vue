@@ -1,7 +1,7 @@
 <template>
   <span @click="toggleClick" class="toggle-btn">
-    <el-icon-expand v-if="isCollapse"></el-icon-expand>
-    <el-icon-fold v-if="!isCollapse"></el-icon-fold>
+    <el-icon-expand v-if="isCollapse" />
+    <el-icon-fold v-if="!isCollapse" />
   </span>
 </template>
 
