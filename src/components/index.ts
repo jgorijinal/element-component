@@ -3,6 +3,7 @@ import chooseArea from './chooseArea'
 import trend from './trend'
 import notification from './notification'
 import list from './list'
+import progress from './progress'
 import { App } from 'vue';
 
 const components = [
@@ -10,7 +11,8 @@ const components = [
   chooseIcon,
   trend,
   notification,
-  list
+  list,
+  progress
 ]
 export default {
   install(app:App) {

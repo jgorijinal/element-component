@@ -45,4 +45,7 @@ const props = defineProps({
 ::v-deep .el-popper {
   padding: 0 !important;
 }
+svg {
+  width: 22px;
+}
 </style>

@@ -25,6 +25,10 @@
       <el-icon-bell />
       <span>通知菜单</span>
     </el-menu-item>
+    <el-menu-item index="/progress">
+      <el-icon-histogram />
+      <span>进度条</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -45,5 +49,8 @@ defineProps({
       margin-left: 10px;
     }
   }
+}
+svg {
+  width: 22px;
 }
 </style>
