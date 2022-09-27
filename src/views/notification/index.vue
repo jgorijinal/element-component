@@ -1,6 +1,6 @@
 <template>
   <notification :value="12">
-    <m-list :list="list" :actions="actions"></m-list>
+    <m-list :list="list" :actions="actions" @clickListItem="clickListItem" @clickAction="clickAction"></m-list>
   </notification>
   <!-- <br />
   <br />
@@ -15,6 +15,13 @@
 
 <script setup lang="ts">
 import { list, actions } from "./data";
+
+const clickListItem = (value) => {
+    console.log(value)
+}
+const clickAction = (value) => {
+    console.log(value)
+}
 </script>
 <style lang="scss">
 .el-popper {

@@ -11,6 +11,7 @@
             class="container"
             v-for="(listItem, index) in item.content"
             :key="index"
+            @click="clickListItem(listItem,index)"
           >
             <div class="avatar" v-if="listItem.avatar">
               <el-avatar :src="listItem.avatar"></el-avatar>
@@ -32,7 +33,7 @@
           </div>
         </el-scrollbar>
         <div class="actions">
-          <div class="action" v-for="(action, i) in actions" :key="i">
+          <div class="action" v-for="(action, i) in actions" :key="i" @click="clickAction(i,action)">
             <div class="a-icon" v-if="action.icon">
               <component :is="`el-icon-${action.icon}`"></component>
             </div>
@@ -46,7 +47,7 @@
 
 <script setup lang="ts">
 import { ref, PropType } from "vue";
-import { ListOptions, ActionOptions } from "./types";
+import { ListOptions, ActionOptions,ListItem } from "./types";
 const props = defineProps({
   list: {
     type: Array as PropType<ListOptions[]>,
@@ -59,7 +60,15 @@ const props = defineProps({
 });
 // 选中的 tab
 const activeName = ref<string>(props.list[0].title);
-//
+
+const emits = defineEmits(['clickListItem','clickAction'])
+// 点击列表某一项. 派发事件
+const clickListItem = (listItem:ListItem,index:number) => {
+  emits('clickListItem', {index,listItem})
+}
+const clickAction = (i:number,action:ActionOptions) => {
+  emits('clickAction', {index:i,action})
+}
 </script>
 <style lang="scss" scoped>
 .container {
