@@ -29,7 +29,11 @@
       <el-icon-histogram />
       <span>进度条</span>
     </el-menu-item>
-  </el-menu>
+    <el-menu-item index="/chooseTime">
+      <el-icon-clock />
+      <span>时间选择器</span>
+    </el-menu-item>
+  </el-menu> 
 </template>
 
 <script setup lang="ts">
