@@ -14,12 +14,18 @@
           </el-radio-group>
         </el-col>
         <el-col :span="14">
-          <el-select v-model="selectedValue">
+          <el-select
+            v-model="selectedValue"
+            placeholder="请选择城市"
+            filterable
+            :filter-method="filterMethod"
+            @change="changeSelect"
+          >
             <el-option
-              v-for="item in 4"
-              :key="item"
-              :value="item"
-              :label="item"
+              v-for="item in options"
+              :key="item.id"
+              :value="item.id"
+              :label="item.name"
             >
             </el-option>
           </el-select>
@@ -68,11 +74,16 @@
           <!--展示省份-->
           <el-scrollbar max-height="300px">
             <template v-for="(arr, key) in provinces" :key="key">
-              <template v-for="(item ,index) in arr" :key="index">
+              <template v-for="(item, index) in arr" :key="index">
                 <el-row class="province-row" :id="key">
                   <el-col :span="3">{{ item.name }}:</el-col>
                   <el-col :span="21">
-                    <span v-for="province in item.data" class="province-item" @click=clickProvince(province)>{{province}}</span>
+                    <span
+                      v-for="province in item.data"
+                      class="province-item"
+                      @click="clickProvince(province)"
+                      >{{ province }}</span
+                    >
                   </el-col>
                 </el-row>
               </template>
@@ -93,7 +104,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import allCities from "../lib/city";
 import { City } from "./types";
 import province from "../lib/province.json";
@@ -105,11 +116,11 @@ const radioValue = ref<string>("按城市");
 // 被选择的下拉框
 const selectedValue = ref<string>("");
 // 所有城市数据
-const cities = ref<any>(allCities.cities);
+const cities = ref(allCities.cities);
 // 所有省份数据
 const provinces = ref<any>(province);
 
-const emits = defineEmits(["changeCity",'changeProvince']);
+const emits = defineEmits(["changeCity", "changeProvince"]);
 
 // 点击了某一个城市
 const clickCity = (item: City) => {
@@ -128,9 +139,48 @@ const clickAlphabet = (item: string) => {
 
 // 点击某一个省份
 const clickProvince = (provinceName: string) => {
-  result.value = provinceName // 给结果赋值
-  visible.value = false // 关闭弹层
-  emits('changeProvince', provinceName) // 给父组件分发事件
+  result.value = provinceName; // 给结果赋值
+  visible.value = false; // 关闭弹层
+  emits("changeProvince", provinceName); // 给父组件分发事件
+};
+// 下拉框选择项
+const options = ref<City[]>([]);
+
+onMounted(() => {
+  const values = Object.values(cities.value).flat();
+  options.value = values;
+});
+
+// 自定义搜索 匹配规则
+const filterMethod = (val: string) => {
+  let values = Object.values(cities.value).flat();
+  if (val === "") {
+    // 没输入东西
+    options.value = values;
+  } else {
+    // 输入了东西
+    // 分情况 : 按城市可以搜索拼音或者中文 , 按省份只能搜中文(由于数据本身的限制)
+    if (radioValue.value === "按城市") {
+      options.value = values.filter((item) => {
+        return item.spell.includes(val) || item.name.includes(val);
+      });
+    } else {
+      options.value = values.filter((item) => {
+        return item.name.includes(val);
+      });
+    }
+  }
+};
+const changeSelect = (id: number) => {
+  let values = Object.values(cities.value).flat();
+  // 找到点击的城市
+  const selectedCity = values.find(item => item.id === id)
+  result.value = selectedCity!.name
+  if (radioValue.value === '按城市') {
+    emits('changeCity',selectedCity)
+  } else if(radioValue.value === '按省份') {
+    emits('changeProvince',selectedCity!.name)
+  }
 }
 </script>
 
@@ -205,9 +255,9 @@ svg {
   }
 }
 .province-row {
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
-.province-item{
+.province-item {
   display: inline-block;
   margin: 0 4px 4px 4px;
   cursor: pointer;
