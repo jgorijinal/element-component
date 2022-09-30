@@ -1,7 +1,7 @@
 <template>
   <el-menu
     router
-    default-active="/home"
+    :default-active="defaultActive"
     class="el-menu-vertical-demo"
     :collapse="isCollapse"  
   >
@@ -45,12 +45,23 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue'
+import { useRoute}  from 'vue-router'
 defineProps({
   isCollapse: {
     type: Boolean,
     required: true,
   },
 });
+const defaultActive = ref('/home')
+const route = useRoute()
+
+watch(() => route.path, () => {
+  console.log(route.path)
+  defaultActive.value = route.path
+}, {
+  immediate:true
+})
 </script>
 
 <style lang="scss" scoped>
