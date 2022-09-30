@@ -31,7 +31,15 @@
     </el-menu-item>
     <el-menu-item index="/chooseTime">
       <el-icon-clock />
-      <span>时间选择器</span>
+      <span>时间选择</span>
+    </el-menu-item>
+    <el-menu-item index="/chooseDate">
+      <el-icon-calendar />
+      <span>日期选择</span>
+    </el-menu-item>
+    <el-menu-item index="/chooseCity">
+      <el-icon-wind-power />
+      <span>城市选择</span>
     </el-menu-item>
   </el-menu> 
 </template>

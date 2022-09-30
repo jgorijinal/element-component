@@ -116,3 +116,8 @@ watch(area, (value) => {
   }
 });
 </script>
+<style lang="scss" scoped>
+  .el-select {
+    margin-right:8px;
+  }
+</style>

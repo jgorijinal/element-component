@@ -6,6 +6,7 @@ import list from './list'
 import progress from './progress'
 import chooseTime from './chooseTime'
 import chooseDate from './chooseDate'
+import chooseCity from './chooseCity'
 import { App } from 'vue';
 
 const components = [
@@ -16,7 +17,8 @@ const components = [
   list,
   progress,
   chooseTime,
-  chooseDate
+  chooseDate,
+  chooseCity
 ]
 export default {
   install(app:App) {

@@ -1,5 +1,10 @@
 <template>
-  <choose-time @changeStart="changeStart" @changeEnd="changeEnd"></choose-time>
+  <div>
+    <choose-date
+      @changeStart="changeStart"
+      @changeEnd="changeEnd"
+    ></choose-date>
+  </div>
 </template>
 
 <script setup lang="ts">
