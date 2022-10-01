@@ -10,5 +10,7 @@ export interface tableOptions {
   // 自定义列表末班名称
   slot?: string,
   // 是否要有操作项
-  action?:boolean
+  action?: boolean,
+  // 可编辑性
+  editable?:boolean
 }

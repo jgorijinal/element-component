@@ -5,13 +5,13 @@
       <el-button type="danger" @click="deleteAction(scope)">删除</el-button>
     </template>
     <template v-slot:name="{scope}">
-        自定义{{scope.row.name}}
+        <el-tag>{{scope.row.name}}</el-tag>
     </template>
     <template v-slot:date="{scope}">
-        自定义{{scope.row.date}}
+      {{scope.row.date}}
     </template>
     <template v-slot:address="{scope}">
-        自定义{{scope.row.address}}
+      {{scope.row.address}}
     </template>
   </m-table>
 </template>
@@ -46,6 +46,7 @@ const tableOptions: tableOptions[] = [
     prop: "date",
     align: "center",
     slot: "date",
+    editable:true
   },
   {
     label: "姓名",
@@ -73,3 +74,5 @@ const deleteAction = (scope) => {
   console.log(scope.row.name);
 };
 </script>
+<style lang="scss" scoped>
+</style>
