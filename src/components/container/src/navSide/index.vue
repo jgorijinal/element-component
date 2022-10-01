@@ -41,6 +41,10 @@
       <el-icon-wind-power />
       <span>城市选择</span>
     </el-menu-item>
+    <el-menu-item index="/table">
+      <el-icon-list />
+      <span>表格</span>
+    </el-menu-item>
   </el-menu> 
 </template>
 

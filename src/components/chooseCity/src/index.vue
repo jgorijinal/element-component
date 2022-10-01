@@ -110,7 +110,7 @@ import { City } from "./types";
 import province from "../lib/province.json";
 const result = ref<string>("请选择");
 // popover 显示/隐藏
-const visible = ref<boolean>(false);
+const visible = ref<boolean>(true);
 // 被选择的单选框 : '按城市' /  '按省份'
 const radioValue = ref<string>("按城市");
 // 被选择的下拉框

@@ -7,6 +7,7 @@ import progress from './progress'
 import chooseTime from './chooseTime'
 import chooseDate from './chooseDate'
 import chooseCity from './chooseCity'
+import table from './table'
 import { App } from 'vue';
 
 const components = [
@@ -18,7 +19,8 @@ const components = [
   progress,
   chooseTime,
   chooseDate,
-  chooseCity
+  chooseCity,
+  table
 ]
 export default {
   install(app:App) {
